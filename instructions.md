@@ -10,7 +10,7 @@ Find the external drive you want to use.
 
 First, you need to unmount the drive.
 
-  sudo umount /dev/sda1
+  sudo umount /dev/sda
 
 Depending on the drive, you may need to also run umount /dev/sda2, umount /dev/sda3, and so on, depending on how many partitions are on the drive from previous usage. Then, to erase and format your flash drive for Linux usage, run:
 
@@ -49,7 +49,9 @@ Formatting will take a few minutes, especially if you have a large drive, so be 
   sudo shutdown -r now
 
 How to Free Up Disk Space in Windows
-  sudo chown -R pi /media/pi/MyExternalDrive
+  sudo mkdir /media/nas
+  sudo chmod -R 777 /media/nas
+  sudo mount -t auto /dev/sda1 /media/nas
 
 
 5. Share the Drive
@@ -63,10 +65,10 @@ The installer will ask if you want to modify smb.conf to use WINS settings from 
   sudo nano /etc/samba/smb.conf
 
   [MyMedia]
-  path = /media/pi/MyExternalDrive/
+  path = /media/nas
   writeable = yes
-  create mask = 0775
-  directory mask = 0775
+  create mask = 0777
+  directory mask = 0777
   public=no
 
 6. Create a Password and Add Users
