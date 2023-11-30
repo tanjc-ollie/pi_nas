@@ -53,6 +53,11 @@ How to Free Up Disk Space in Windows
   sudo chmod -R 777 /media/nas
   sudo mount -t auto /dev/sda1 /media/nas
 
+  sudo nano /etc/fstab
+
+add to end:
+  /dev/sda1 /media/nas auto noatime 0 0
+
 
 5. Share the Drive
 
