@@ -50,7 +50,7 @@ Formatting will take a few minutes, especially if you have a large drive, so be 
 
 How to Free Up Disk Space in Windows
   sudo mkdir /media/nas
-  sudo chmod -R 777 /media/nas
+  sudo chmod -R 777 /media/nas (sudo chown nobody:nogroup /shares/anonymous/)
   sudo mount -t auto /dev/sda1 /media/nas
 
   sudo nano /etc/fstab
@@ -75,6 +75,16 @@ The installer will ask if you want to modify smb.conf to use WINS settings from 
   create mask = 0777
   directory mask = 0777
   public=no
+
+  [OllieNas]
+  path=/media/nas
+  browsable=yes
+  writeable=yes
+  guest ok=yes
+  read only=no
+  public=no
+  force user=nobody
+  force group=nogroup
 
 6. Create a Password and Add Users
 
