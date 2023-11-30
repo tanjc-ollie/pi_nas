@@ -69,6 +69,8 @@ The installer will ask if you want to modify smb.conf to use WINS settings from 
 
   sudo nano /etc/samba/smb.conf
 
+  ****Change public to yes
+
   [MyMedia]
   path = /media/nas
   writeable = yes
